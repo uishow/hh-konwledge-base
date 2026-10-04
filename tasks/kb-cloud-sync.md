@@ -19,8 +19,50 @@ cluster: sync
 - **同步主干**：OpenKnowledge 原生 git 同步（GitHub 远端），不自建服务器、不备案。
 - **本地多人形态**：混合 —— 部分成员本机装 OpenKnowledge（各自 pull/push），部分成员仅用云端（小程序）。
 - **实时性**：最终一致即可（打开 / 手动 / 定时同步），不要求 CRDT 实时同编。
+- **四面都要能同步**（同日补充）：Git 端、个人本地 OK 端、小程序云端、小程序个人端，数据都要能收敛到同一套事实，而不是只通其中两头。
 
 > 此组合零自建服务器，正好绕开 [App 数据同步方案](./app-sync-plan.md) 中已规避的「部署公网 + 备案」最高成本项。
+
+## 四面同步（目标与分工）
+
+四面不是互相直连成网，而是两条边拼成闭环。任一端写入后，沿环走一圈，另外三端都能读到对应数据。细节见 [App 数据同步方案](./app-sync-plan.md) 与桥接文件 [app-sync.md](../app-sync.md)。
+
+```mermaid
+flowchart LR
+  gitNode[GitHub]
+  okNode[Local OK]
+  cloudNode[WeChat cloud]
+  mpNode[Mini program]
+  gitNode <--> okNode
+  okNode --> cloudNode
+  cloudNode --> okNode
+  cloudNode <--> mpNode
+```
+
+| 端 | 角色 | 读什么 | 写什么 |
+| --- | --- | --- | --- |
+| Git 端 | 知识库 markdown 的远端事实源 | 全库 `.md` / `.ok` | `ok sync` / `git push` |
+| 个人本地 OK 端 | 编辑器 + 桥 | Git 拉下来的库，加 [app-sync.md](../app-sync.md) | 改档案后 `ok sync`；导出 `kb.json`；拉取云端运营数据覆盖 `app-sync.md` |
+| 小程序云端 | 手机侧的事实源 | `kb.json`、`kb_meta`、`hh_growth` / `checkins` | 上传 `kb.json`；集合写入 |
+| 小程序个人端 | 家人手机上的 App | 启动时拉云端 `kb.json` + 自己的打卡 | 待办 / 笔记 / 打卡先写云数据库 |
+
+三类数据不要混成一份互相覆盖的 JSON：
+
+1. **档案内容**（成长计划、课表、约定）：事实源是 Git / 本地 OK。下行到小程序：本机 `export.mjs` 生成 `kb.json`，上传云存储，个人端按 `kb_meta` 下载。
+2. **家庭共享运营**（小程序里新建的待办、笔记、习惯摘要）：事实源是微信云库。上行到 Git / OK：导出覆盖 [app-sync.md](../app-sync.md)（勿手改），再 `ok sync`。
+3. **个人打卡**（按 openid 隔离）：事实源是云数据库 `checkins` 与该用户的小程序端。不把个人勾选直接改写别人的 `growth` 文档。家庭只在 `app-sync.md` 里看摘要（如打卡天数）。
+
+> [!IMPORTANT]
+> 小程序个人端不能直连 GitHub 或本机 OpenKnowledge（`ok start` 是 localhost）。个人端只跟小程序云端说话。Git 与手机之间必须经过本地 OK 这座桥。
+
+闭环要跑通，负责人机每次（或定时）做完这四步，四面才齐：
+
+1. `ok sync`（Git 与本地 OK 互相同步）
+2. `node scripts/export.mjs` 并把 `kb.json` 上传云存储、更新 `kb_meta`（OK 下行到云端，下次打开的个人端能拉到）
+3. `npm run sync:kb:pull`（或等价导出）覆盖 `app-sync.md`（云端上行到本地 OK）
+4. 再 `ok sync`（本地 OK 推回 Git）
+
+缺任一步，就会出现 Git 上有新计划但手机还是旧的，或手机写了笔记但 OK / Git 没有。
 
 ## 总体拓扑
 

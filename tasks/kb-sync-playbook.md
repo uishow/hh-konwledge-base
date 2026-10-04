@@ -27,7 +27,45 @@ cluster: sync
 | Git 远端 | `https://github.com/uishow/hh-konwledge-base.git` |
 | 微信云环境 ID（脚本默认） | `cloud1-d9ghk5qgd4b99b5ce`（可用环境变量 `CLOUD_ENV` 覆盖） |
 
-GitHub 账号：本机桥用 `uishow`。其他家人用**自己的 GitHub 账号**，在仓库 Settings → Collaborators 邀请后，再在自己电脑 `ok auth login`。不要互借 token。
+GitHub 账号：本机桥用 `uishow`。其他家人用**自己的 GitHub 账号**，按下一节邀请为协作者后，再在自己电脑 `ok auth login`。不要互借 token。
+
+## 邀请家人进仓库（Settings → Collaborators）
+
+仓库是个人仓 `uishow/hh-konwledge-base`。步骤依据 [GitHub 官方说明（邀请个人仓库协作者）](../external-sources/github-invite-collaborators.md)（2026-10-04 抓取）。被邀请人得到的是协作者权限（可 clone / pull / push），不能改仓库的 Settings。
+
+### 邀请前，家人先做
+
+1. 打开 [GitHub 注册页](https://github.com/signup) 注册自己的账号（已有账号跳过）。
+2. 把 **GitHub 用户名**（头像旁或个人主页 URL 里 `github.com/用户名` 那一段）发给你。也可以发注册用的邮箱。
+
+### 你用 `uishow` 登录后操作
+
+1. 打开仓库首页：[uishow/hh-konwledge-base](https://github.com/uishow/hh-konwledge-base)
+2. 点仓库名下方的 **Settings**。若这一行没有 Settings，点 **···**（More）再选 Settings。必须是仓库主人 `uishow` 登录，别的账号看不到完整设置。
+3. 左侧栏找到 **Access**（访问），点 **Collaborators**（协作者）。也可直接打开 [协作者设置页](https://github.com/uishow/hh-konwledge-base/settings/access)。
+4. 点 **Add people**（添加人员）。
+5. 搜索框输入家人的 **GitHub 用户名或邮箱**，在匹配列表里点选正确的人。
+6. 点 **Add ＜名字＞ to REPOSITORY**（添加该用户到仓库）。
+7. 页面上会出现待接受邀请。邀请未接受前，对方还不能 `git clone` 私有仓；仓库若仍是 Public，别人能看内容，但没有你授权则不能 push。
+
+### 家人接受邀请
+
+1. 查注册邮箱里 GitHub 的邀请信，点链接；或登录 GitHub 后打开 [通知页](https://github.com/notifications)，处理仓库邀请。
+2. 也可登录后打开 [仓库首页](https://github.com/uishow/hh-konwledge-base)，页面上方会有 **Accept invitation**（接受邀请）。
+3. 接受后，在自己电脑执行（见上文「其他电脑装 OpenKnowledge 后接入 Git」）：
+
+```bash
+git clone https://github.com/uishow/hh-konwledge-base.git
+cd hh-konwledge-base
+ok auth login
+ok sync
+```
+
+`ok auth login` 必须登**家人自己的** GitHub 账号，不要用 `uishow`。
+
+### 取消邀请或移除协作者
+
+同一页 [协作者设置](https://github.com/uishow/hh-konwledge-base/settings/access)：待接受的邀请可 Cancel；已加入的人可 Remove。移除后对方立刻失去 push 权限。
 
 ## 三类数据（命令改错对象会覆盖错文件）
 

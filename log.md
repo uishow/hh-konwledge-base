@@ -4,6 +4,11 @@ description: Append-only audit trail of changes to this knowledge base.
 ---
 Append-only audit trail. Add one dated entry per turn that creates, edits, or restructures content. The knowledge-base skill describes what to log and the entry shape.
 
+## 2026-10-04：补仓库协作者邀请步骤
+
+- 抓取并保存 [GitHub 邀请个人仓库协作者说明](./external-sources/github-invite-collaborators.md)，在 [四面同步操作手册](./tasks/kb-sync-playbook.md) 写明 Settings → Collaborators 的逐步操作与接受邀请后的 clone / `ok auth login`。
+- Files touched: [GitHub 邀请个人仓库协作者说明](./external-sources/github-invite-collaborators.md), [四面同步操作手册](./tasks/kb-sync-playbook.md)
+
 ## 2026-10-04：写入四面同步操作手册
 
 - 新增 [四面同步操作手册](./tasks/kb-sync-playbook.md)：Git / 本地 OK / 小程序云 / 小程序个人端的路径、一次性准备、闭环 A–D 命令、角色分工与排错。从 [知识库云地同步方案](./tasks/kb-cloud-sync.md)、[App 数据同步方案](./tasks/app-sync-plan.md) 链过去。

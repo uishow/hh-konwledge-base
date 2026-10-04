@@ -61,3 +61,5 @@ contentRules:
     enabled: true
   okf:
     enabled: true
+autoSync:
+  default: true

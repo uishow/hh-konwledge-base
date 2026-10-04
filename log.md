@@ -4,6 +4,12 @@ description: Append-only audit trail of changes to this knowledge base.
 ---
 Append-only audit trail. Add one dated entry per turn that creates, edits, or restructures content. The knowledge-base skill describes what to log and the entry shape.
 
+## 2026-10-04：写入四面同步操作手册
+
+- 新增 [四面同步操作手册](./tasks/kb-sync-playbook.md)：Git / 本地 OK / 小程序云 / 小程序个人端的路径、一次性准备、闭环 A–D 命令、角色分工与排错。从 [知识库云地同步方案](./tasks/kb-cloud-sync.md)、[App 数据同步方案](./tasks/app-sync-plan.md) 链过去。
+- Files touched: [四面同步操作手册](./tasks/kb-sync-playbook.md), [知识库云地同步方案](./tasks/kb-cloud-sync.md), [App 数据同步方案](./tasks/app-sync-plan.md)
+- Open follow-ups: 云存储热更新与小程序打卡落库仍按 app-sync-plan 执行清单未完成。
+
 ## 2026-10-04：确认四面同步目标
 
 - 用户要求 Git 端、个人本地 OK 端、小程序云端、小程序个人端都能实现数据同步。写入 [知识库云地同步方案](./tasks/kb-cloud-sync.md)：三类数据分工、个人端只连微信云、闭环四步。同步更新 [App 数据同步方案](./tasks/app-sync-plan.md) 半自动桥的含义。

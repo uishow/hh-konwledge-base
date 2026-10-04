@@ -162,8 +162,11 @@ flowchart LR
 - 换机器：先 `git clone` + `ok auth login` 再 `ok sync`，勿直接拷贝 `.ok/local/`。
 - 当前 `ok sync` 依赖 git remote 存在；远端未建前执行会失败（预期内）。
 
+日常逐步命令、路径、排错见 [四面同步操作手册](./kb-sync-playbook.md)。Git 远端已是 `https://github.com/uishow/hh-konwledge-base.git`。
+
 ## 相关
 
+- [四面同步操作手册](./kb-sync-playbook.md)
 - [App 数据同步方案](./app-sync-plan.md)
 - [App 构建方案（PC 网页 + 微信小程序）](./app-build-plan.md)
 - [App 源码（导出 / 读取层 / 页面）](./app-source.md)

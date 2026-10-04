@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "skills": {
+    "knowledge-base": {
+      "source": "inkeep/open-knowledge-skills",
+      "skill": "knowledge-base",
+      "contentHash": "05e33f7cd9398bf41f7e87b6fde479c668bf8446dad165c9f0eca5e5fa3146e0",
+      "importedAt": "2026-09-30T00:43:29.556Z"
+    },
+    "consolidate-notes": {
+      "source": "inkeep/open-knowledge-skills",
+      "skill": "consolidate-notes",
+      "contentHash": "2992aacb38e8862685c2d9eeb00431823c6c23cd3fff328d484e5775eeec50cc",
+      "importedAt": "2026-09-30T00:43:29.558Z"
+    },
+    "research-with-sources": {
+      "source": "inkeep/open-knowledge-skills",
+      "skill": "research-with-sources",
+      "contentHash": "38c5b06ccae312ad25527eda5bc76efd7cc23cf9f66019dc6ee832adbff9f813",
+      "importedAt": "2026-09-30T00:43:29.559Z"
+    }
+  }
+}

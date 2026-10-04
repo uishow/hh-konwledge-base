@@ -1,0 +1,13 @@
+# Seeded by OpenKnowledge when this project was created. Edit freely.
+.DS_Store
+.localized
+Thumbs.db
+thumbs.db
+desktop.ini
+Desktop.ini
+.directory
+
+# Local AI editor configs (machine-specific, not KB content)
+.claude/
+.codex/
+.cursor/

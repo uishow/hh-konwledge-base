@@ -1,6 +1,6 @@
 ---
 title: 知识库云地同步方案（OpenKnowledge 原生 git 同步）
-description: 基于 OpenKnowledge 原生 sync（GitHub 远端）的鸭仔一家人知识库云地同步拓扑、设置清单与日常使用。混合形态（部分成员本地 OK、部分仅用云端小程序），最终一致。
+description: Git、本地 OK、小程序云端、小程序个人端四面同步：拓扑、数据分工、闭环步骤。混合形态，最终一致。
 type: plan
 status: draft
 tags:
@@ -9,6 +9,7 @@ tags:
   - ok
   - github
   - knowledge-base
+cluster: sync
 ---
 
 # 知识库云地同步方案（OpenKnowledge 原生 git 同步）

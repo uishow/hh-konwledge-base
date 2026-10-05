@@ -24,12 +24,12 @@ cluster: sync
 
 ## 路径与仓库（先记这三处）
 
-| 名称 | 路径或 URL |
-| --- | --- |
-| 知识库（本地 OK / Git 工作副本） | `/Users/beryllewis/Documents/OpenKnowledge/鸭仔一家人` |
-| 小程序工程 | `/Users/beryllewis/Documents/OpenKnowledge/hh-growth-app` |
-| Git 远端 | `https://github.com/uishow/hh-konwledge-base.git` |
-| 微信云环境 ID（脚本默认） | `cloud1-d9ghk5qgd4b99b5ce`（可用环境变量 `CLOUD_ENV` 覆盖） |
+| 名称 | 路径或 URL（macOS） | 路径（Windows） |
+| --- | --- | --- |
+| 知识库（本地 OK / Git 工作副本） | `/Users/beryllewis/Documents/OpenKnowledge/鸭仔一家人` | `C:\Users\佩奇\AI项目文件夹\hh-ok-base\hh-konwledge-base` |
+| 小程序工程 | `/Users/beryllewis/Documents/OpenKnowledge/hh-growth-app` | `C:\Users\佩奇\AI项目文件夹\hh-growth-app` |
+| Git 远端 | `https://github.com/uishow/hh-konwledge-base.git` | 同 macOS |
+| 微信云环境 ID（脚本默认） | `cloud1-d9ghk5qgd4b99b5ce`（可用环境变量 `CLOUD_ENV` 覆盖） | 同 macOS |
 
 GitHub 账号：本机桥用 `uishow`。其他家人用**自己的 GitHub 账号**，按下一节邀请为协作者后，再在自己电脑 `ok auth login`。不要互借 token。
 

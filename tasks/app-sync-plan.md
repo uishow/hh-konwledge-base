@@ -2,7 +2,7 @@
 title: App 数据同步方案（打卡持久化 / 内容热更新 / 知识库回写）
 description: 小程序接入微信端后的三条同步链路：云开发打卡持久化、kb.json 免发版热更新、勾选回写知识库
 type: plan
-status: draft
+status: stable
 tags:
   - app
   - sync

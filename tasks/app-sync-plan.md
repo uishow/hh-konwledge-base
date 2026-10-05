@@ -127,12 +127,12 @@ export async function setCheckin(
 
 ## 执行清单
 
-- [ ] 在微信开发者工具开通云开发，记录环境 ID；
-- [ ] 新建 `checkins` 集合并设为「仅创建者可读写」；
-- [ ] 替换 `src/store/checkin.ts` 为上面的云开发版本；
-- [ ] 待办页改为 `useEffect` 载入 state 渲染；
-- [ ] 上传 `kb.json` 到云存储并建 `kb_meta`，改造启动拉取逻辑；
-- [ ] 验证：小程序勾选 → 退出重进保留 → 换设备仍保留。
+- [x] 在微信开发者工具开通云开发，记录环境 ID；
+- [x] 新建 `checkins` 集合并设为「仅创建者可读写」；
+- [x] 替换 `src/store/checkin.ts` 为上面的云开发版本；
+- [x] 待办页改为 `useEffect` 载入 state 渲染；
+- [x] 上传 `kb.json` 到云存储并建 `kb_meta`，改造启动拉取逻辑；
+- [x] 验证：小程序勾选 → 退出重进保留 → 换设备仍保留。
 
 ## 相关
 

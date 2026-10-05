@@ -4,6 +4,16 @@ description: Append-only audit trail of changes to this knowledge base.
 ---
 Append-only audit trail. Add one dated entry per turn that creates, edits, or restructures content. The knowledge-base skill describes what to log and the entry shape.
 
+## 2026-10-05：实现 sync:kb:pull（云端 → app-sync.md 回写）
+
+- 此前手册描述的 `npm run sync:kb:pull`（等价 `node scripts/export.mjs --sync-back app-state.json --apply`）在源码中并未实现：[App 源码](./tasks/app-source.md) 里的 `export.mjs` 只生成 `src/data/kb.json`，没有 `--sync-back` 分支、无微信云 API、无写回 [app-sync.md](./app-sync.md) 的逻辑；[Work Log](./log.md) 也把它列为 Open follow-up。
+- 在本机新建最小工程 `hh-growth-app/`（仅脚本，不含 Taro）：`scripts/export.mjs` 补全 `--sync-back [app-state.json] [--apply|--out]`，直读微信云库 `hh_growth/family` 或 `app-state.json`，整文件渲染并覆盖 [app-sync.md](./app-sync.md)。同时修复原源码里 `ingest(dir: string, file: string)` 的 TS 类型标注（`.mjs` 中是语法错误）。
+- 运行约束：本机存在 TLS 拦截代理，`npm install` 因证书不可信失败（registry.npmjs.org 不可达）；已将 `gray-matter`/`marked` 改为按需动态加载，使 `--sync-back` 回写路径零依赖可跑。`node` 须带 `NODE_OPTIONS=--use-system-ca` 才能信任系统 CA 并访问微信 API（PowerShell 的 `Invoke-WebRequest` 同样报 SSL 信任失败）。
+- 首跑落盘：以微信云库为事实源，[app-sync.md](./app-sync.md) 中「今天下午去览秀城自习 _(鸭姥爷)_」由 `- [ ]` 翻为 `- [x]`（云端 `done:true`，updatedAt 2026-10-04T10:34:15Z）。脚本先写临时 `.txt`，再经 OpenKnowledge `write` 落盘，避免原生写绕过 CRDT。
+- 两条 1004 笔记的顺序以云端为准（与旧文件先后颠倒，但作者↔内容配对不变）。
+- Files touched: [app-sync.md](./app-sync.md), [四面同步操作手册](./tasks/kb-sync-playbook.md)；新增 `hh-growth-app/`（在知识库之外，不入共享 git 仓库）。
+- Open follow-ups: `hh-growth-app` 仍为 pull-only 最小工程，未含 Taro 应用本体（`sync:kb` 编译发版暂不可用）；本代理网络下 `npm install` 依赖安装仍受阻。
+
 ## 2026-10-04：补仓库协作者邀请步骤
 
 - 抓取并保存 [GitHub 邀请个人仓库协作者说明](./external-sources/github-invite-collaborators.md)，在 [四面同步操作手册](./tasks/kb-sync-playbook.md) 写明 Settings → Collaborators 的逐步操作与接受邀请后的 clone / `ok auth login`。

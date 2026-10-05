@@ -18,6 +18,10 @@ cluster: sync
 > [!NOTE]
 > 小程序个人端不能直连 GitHub，也不能访问本机 `ok start`。手机只跟微信云开发说话。Git 与手机之间必须经过「本地 OK + hh-growth-app 脚本」这座桥。
 
+> [!NOTE]
+> `sync:kb:pull` 现已在 `hh-growth-app/scripts/export.mjs` 实现：`--sync-back [app-state.json] [--apply|--out]`，直读微信云库 `hh_growth/family`（或 `app-state.json` 文件模式）后整文件渲染并覆盖 [app-sync.md](../app-sync.md)。此前该能力只在文档里描述、源码中并不存在，详见 [Work Log](../log.md) 2026-10-05。
+> 本机代理网络有 TLS 拦截：`node` 须带 `NODE_OPTIONS=--use-system-ca` 才能访问微信 API；`npm install` 因证书不可信会失败，回写路径已改为零依赖（按需动态加载 `gray-matter`/`marked`）。
+
 ## 路径与仓库（先记这三处）
 
 | 名称 | 路径或 URL |
